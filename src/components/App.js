@@ -1,5 +1,6 @@
 import TrelloList from './trelloList';
 import {connect} from 'react-redux';
+import TrelloActionButton from './trelloActionButton';
 
 function App({lists}) {
   return (
@@ -8,6 +9,9 @@ function App({lists}) {
       {lists.map(({title, cards} , id) => (
         <TrelloList key={id} title={title} cards={cards}/>
       ))}
+
+      {/* 추가버튼 영역 */}
+      <TrelloActionButton list={lists}/>
       </div>
     </div>
   );

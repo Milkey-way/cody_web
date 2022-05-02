@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 const TrelloCard = ({key,text}) => {
     return(
+       //하얀 리스트 카드
         <Card style={styles.cardContainer}>
             <CardContent>
                 <Typography gutterBottom>{text}</Typography>

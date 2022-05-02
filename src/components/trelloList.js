@@ -1,13 +1,18 @@
 import React from 'react'; 
 import TrelloCard from './TrelloCard';
+import TrelloActionButton from './trelloActionButton';
 const TrelloList = ({title, cards}) => { 
     return ( 
+        //회색 카드 영역
         <div style={style.container}>
-    <h4>{title}</h4> 
+        <h4>{title}</h4> 
     
-    {cards.map(({text}, id) => (
-        <TrelloCard key={id} text={text}/>
-    ))}
+        {cards.map(({text}, id) => (
+            <TrelloCard key={id} text={text}/>
+        ))}
+
+        {/* 추가버튼 영역 */}
+        <TrelloActionButton />
     </div>
     ); 
 }; 
