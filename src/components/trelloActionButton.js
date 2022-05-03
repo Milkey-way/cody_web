@@ -3,26 +3,38 @@ import Icon from '@material-ui/core/Icon'
 import Textarea from 'react-textarea-autosize'
 import Card from '@material-ui/core/Card'; 
 import Button from '@material-ui/core/Button'; 
-
+import { addList } from '../action';
+import { useDispatch } from 'react-redux';
 
 const TrelloActionButton = ({ list }) => { 
     const [state, setState] = useState(false)
     const [text, setText] = useState('')
+    const dispatch = useDispatch()
+
+
+
 
     const renderForm = () =>{
         const Placeholder = list ? "Enter list title..." : "Enter a title for this card..." 
         const buttonTitle = list ? "Add List" : "Add Card"
-
+        
         const handleInputChange = ({target}) => {
             setText(target.value)
         }
+
+        const handleAddList = () => { 
+            if (text) { dispatch(addList(text)); 
+            }
+             return; 
+            };
+
         return(
             <div>
                 <Card style={{overflow:"visible", minHeight:80, minWidth:272, padding:"6px 8px 2px"}}>
                     <Textarea value={text} onChange={handleInputChange} autoFocus onBlur={()=>{setState(false)}} style={{ resize:"none", overflow:"hidden", outline:"none", border:"none", width:"100%" }} />
                 </Card>
                 <div style={styles.formButtonGroup}>
-                    <Button variant="contained" style={{color:"white", backgroundColor:"#5aac44"}}>{buttonTitle}</Button>
+                    <Button onMouseDown={handleAddList} variant="contained" style={{color:"white", backgroundColor:"#5aac44"}}>{buttonTitle}</Button>
                     <Icon style={{marginLeft:8, cursor:"pointer"}}>close</Icon>
                 </div>
             </div>
