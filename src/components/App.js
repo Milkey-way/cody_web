@@ -7,7 +7,7 @@ function App({lists}) {
     <div className="App">
       <div style={styles.listsContainer}>
       {lists.map(({title, cards} , id) => (
-        <TrelloList key={id} title={title} cards={cards}/>
+        <TrelloList listID={id} key={id} title={title} cards={cards}/>
       ))}
 
       {/* 추가버튼 영역 */}

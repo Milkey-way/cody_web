@@ -1,7 +1,7 @@
 import React from 'react'; 
 import TrelloCard from './TrelloCard';
 import TrelloActionButton from './trelloActionButton';
-const TrelloList = ({title, cards}) => { 
+const TrelloList = ({listID,title, cards}) => { 
     return ( 
         //회색 카드 영역
         <div style={style.container}>
@@ -12,7 +12,7 @@ const TrelloList = ({title, cards}) => {
         ))}
 
         {/* 추가버튼 영역 */}
-        <TrelloActionButton />
+        <TrelloActionButton listID={listID} />
     </div>
     ); 
 }; 
