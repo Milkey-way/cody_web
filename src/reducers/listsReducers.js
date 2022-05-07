@@ -1,20 +1,23 @@
 import { CONSTANTS } from "../action";
 
-let listID = 2; //추후에 서버통신으로 DB안에서 마지막 listID를 가져와야한다
-let cardID = 4; //추후에 서버통신으로 DB안에서 마지막 cardID를 가져와야한다
+let listID = 1; //추후에 서버통신으로 DB안에서 마지막 listID를 가져와야한다
+let cardID = 5; //추후에 서버통신으로 DB안에서 마지막 cardID를 가져와야한다
 
 const initialState = [ 
-    { title: 'last Episode', 
-    id: 0, cards: [ { id: 0, text: 'we created a static list and a static card' }, 
-    { id: 1, text: 'we used a mix between material' } 
+    { title: "last Episode", 
+    id: `list-${0}`, 
+    cards: [ 
+    { id: `card-${0}`, text: "we created a static list and a static card" }, 
+    { id: `card-${1}`, text: "we used a mix between material" } 
 ] 
 }, 
-{ title: 'this Episode', 
-id: 1, cards: 
-[ 
-    { id: 0, text: 'Hi' }, 
-    { id: 1, text: 'we used a mix between material' }, 
-    { id: 2, text: 'what?' } 
+{ title: "this Episode", 
+id: `list-${1}`, 
+cards: [ 
+    { id: `card-${2}`, text: "Hi" }, 
+    { id: `card-${3}`, text: "we used a mix between material" }, 
+    { id: `card-${4}`, text: "what?" } ,
+    { id: `card-${5}`, text: "wtf?" } 
 ] 
 } 
 ];
@@ -25,7 +28,7 @@ const listsReducer = (state = initialState, action) =>
             const newList = {
                 title:action.payload,
                 cards: [],
-                id: listID
+                id: `list-${listID}`
             };
         listID += 1
         return [...state, newList];
@@ -33,7 +36,7 @@ const listsReducer = (state = initialState, action) =>
         case CONSTANTS.ADD_CARD:
         const newCard = {
             text: action.payload.text,
-            id: cardID,
+            id: `card-${cardID}`,
         }
         cardID += 1
         const newState = state.map(list => {

@@ -1,9 +1,15 @@
 import TrelloList from './trelloList';
 import {connect} from 'react-redux';
 import TrelloActionButton from './trelloActionButton';
+import { DragDropContext } from 'react-beautiful-dnd'
 
 function App({lists}) {
+
+  const onDragEnd = () => { //드래그 끝나면 할일 
+  }
+
   return (
+    <DragDropContext onDragEnd={onDragEnd}>
     <div className="App">
       <div style={styles.listsContainer}>
       {lists.map(({title, cards} , id) => (
@@ -14,7 +20,9 @@ function App({lists}) {
       <TrelloActionButton list={lists}/>
       </div>
     </div>
+    </DragDropContext>
   );
+  
 }
 const styles = {
   listsContainer: {
