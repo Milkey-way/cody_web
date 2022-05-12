@@ -32,7 +32,8 @@ class App extends Component {
   }
 
   render(){
-    const { lists } = this.props;
+    const { lists } = this.props;     
+    //드래그 구현, 호출시점   
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
       <div className="App">

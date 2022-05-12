@@ -133,14 +133,16 @@ class TrelloActionButton extends React.Component {
 }
 
 const styles = {
-  openFormButtonGroup: {
+  openFormButtonGroup: { //여기에 중간줄 그으면 되겠다
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
     borderRadius: 3,
     height: 36,
     width: 272,
-    paddingLeft: 10
+    paddingLeft: 10,
+    marginTop: 100,
+    backgroundColor: "#fffffff"
   },
   formButtonGroup: {
     marginTop: 8,
