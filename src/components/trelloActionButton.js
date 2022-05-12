@@ -24,6 +24,7 @@ class TrelloActionButton extends React.Component {
     });
   };
 
+<<<<<<< HEAD
   handleInputChange = e => {
     this.setState({
       text: e.target.value
@@ -39,6 +40,29 @@ class TrelloActionButton extends React.Component {
         text: ""
       });
       dispatch(addList(text));
+=======
+        const handleAddCard = () => { 
+            console.log("handleAddCard 호출");
+            console.log(text);
+            if (text) { 
+                dispatch(addCard(listID, text)); 
+                setText("");
+            }
+            return; 
+            };    
+
+        return(
+            <div>
+                <Card style={{overflow:"visible", minHeight:80, minWidth:272, padding:"6px 8px 2px"}}>
+                    <Textarea value={text} onChange={handleInputChange} autoFocus onBlur={()=>{setState(false)}} style={{ resize:"none", overflow:"hidden", outline:"none", border:"none", width:"100%" }} />
+                </Card>
+                <div style={styles.formButtonGroup}>
+                    <Button onMouseDown={list ? handleAddList : handleAddCard} variant="contained" style={{color:"white", backgroundColor:"#5aac44"}}>{buttonTitle}</Button>
+                    <Icon style={{marginLeft:8, cursor:"pointer"}}>close</Icon>
+                </div>
+            </div>
+        )
+>>>>>>> 8fb29a8d40a4e150c128e251a497ead8b16032ef
     }
 
     return;
