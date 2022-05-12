@@ -55,13 +55,6 @@ class App extends Component {
           }
   }
 
-
-const styles = {
-  listsContainer: {
-    display: 'flex',
-    flexDirection: 'row'
-  }
-}
 const mapStateToProps = state => ({
     lists: state.lists
 });

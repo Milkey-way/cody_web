@@ -63,6 +63,7 @@ class TrelloActionButton extends React.Component {
     const buttonTextOpacity = list ? 1 : 0.5;
     const buttonTextColor = list ? "white" : "inherit";
     const buttonTextBackground = list ? "rgba(0,0,0,.15)" : "inherit";
+    const tempstyle = list ? 0 : 100;
 
     return (
       <div
@@ -71,7 +72,8 @@ class TrelloActionButton extends React.Component {
           ...styles.openFormButtonGroup,
           opacity: buttonTextOpacity,
           color: buttonTextColor,
-          backgroundColor: buttonTextBackground
+          backgroundColor: buttonTextBackground,
+          marginTop: tempstyle
         }}
       >
         <Icon>add</Icon>
@@ -133,16 +135,14 @@ class TrelloActionButton extends React.Component {
 }
 
 const styles = {
-  openFormButtonGroup: { //여기에 중간줄 그으면 되겠다
+  openFormButtonGroup: { //Card와 list 추가 버튼에 동시 적용됨
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
     borderRadius: 3,
     height: 36,
     width: 272,
-    paddingLeft: 10,
-    marginTop: 100,
-    backgroundColor: "#fffffff"
+    paddingLeft: 10
   },
   formButtonGroup: {
     marginTop: 8,
