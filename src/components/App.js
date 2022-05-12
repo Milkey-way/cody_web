@@ -35,8 +35,8 @@ class App extends Component {
     const { lists } = this.props;
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-      <div>
-        <h2>Hello Youtube</h2>
+      <div className="App">
+        <h2>Hello My Loadmap</h2>
         <ListContainer>
           {lists.map(list => (
             <TrelloList
