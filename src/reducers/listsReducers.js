@@ -1,12 +1,7 @@
 import { CONSTANTS } from "../action";
 
-<<<<<<< HEAD
 let listID = 2; //추후에 서버통신으로 DB안에서 마지막 listID를 가져와야한다
 let cardID = 6; //추후에 서버통신으로 DB안에서 마지막 cardID를 가져와야한다
-=======
-let listID = 1; //추후에 서버통신으로 DB안에서 마지막 listID를 가져와야한다
-let cardID = 5; //추후에 서버통신으로 DB안에서 마지막 cardID를 가져와야한다
->>>>>>> 8fb29a8d40a4e150c128e251a497ead8b16032ef
 
 const initialState = [ 
     { title: "last Episode", 
