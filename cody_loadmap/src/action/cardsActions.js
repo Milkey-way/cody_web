@@ -6,6 +6,7 @@ export const addCard = (listID, text) => {
     }; 
 };
 export const editCard = (id, listID, newText) => {
+  console.log("카드액션editCard호출");
     return {
       type: CONSTANTS.EDIT_CARD,
       payload: { id, listID, newText }

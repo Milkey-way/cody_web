@@ -62,7 +62,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
 
   const saveCard = e => {
     e.preventDefault();
-
+  console.log("savecard 호출");
     dispatch(editCard(id, listID, cardText));
     setIsEditing(false);
   };

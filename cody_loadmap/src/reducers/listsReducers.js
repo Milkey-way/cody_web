@@ -17,7 +17,7 @@ cards: [
     { id: `card-${2}`, text: "Hi" }, 
     { id: `card-${3}`, text: "we used a mix between material" }, 
     { id: `card-${4}`, text: "what?" } ,
-    { id: `card-${5}`, text: "wtf?" } 
+    { id: `card-${5}`, text: "hehe?" } 
 ] 
 } 
 ];
