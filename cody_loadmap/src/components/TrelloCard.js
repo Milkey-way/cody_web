@@ -13,9 +13,7 @@ import TrelloForm from "./TrelloForm"
 const CardContainer = styled.div`
 margin: 0 0 8px 0;
 position: relative;
-max-width: 100%;
-word-wrap: break-word;
-`
+`;
 const EditButton = styled(Icon)`
   position: absolute;
   display: none;
@@ -53,6 +51,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   const [cardText, setText] = useState(text);
 
   const closeForm = e => {
+    console.log("clicked");
     setIsEditing(false);
   };
 
@@ -74,7 +73,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
 
   const renderEditForm = () => {
     return (
-      <TrelloForm text={cardText} onChange={handleChange} closeForm={closeForm}>
+      <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
     );
@@ -98,6 +97,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
               >
                 edit
               </EditButton>
+              
               <DeleteButton fontSize="small" onMouseDown={handleDeleteCard}>
                 delete
               </DeleteButton>

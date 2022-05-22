@@ -5,6 +5,31 @@ const initialState = {
     text: "Last Episode",
     id: `card-0`,
     list: "list-0"
+  },
+  "card-1": {
+    text: "Last Episode",
+    id: `card-1`,
+    list: "list-1"
+  },
+  "card-2": {
+    text: "Last Episode",
+    id: `card-2`,
+    list: "list-2"
+  },
+  "card-3": {
+    text: "Last Episode",
+    id: `card-3`,
+    list: "list-3"
+  },
+  "card-4": {
+    text: "Last Episode",
+    id: `card-4`,
+    list: "list-4"
+  },
+  "card-5": {
+    text: "Last Episode",
+    id: `card-5`,
+    list: "list-5"
   }
 };
 
@@ -32,6 +57,7 @@ const cardsReducer = (state = initialState, action) => {
       return { ...state, [`card-${id}`]: card };
     }
 
+    
     case CONSTANTS.DELETE_CARD: {
       const { id } = action.payload;
       const newState = state;
