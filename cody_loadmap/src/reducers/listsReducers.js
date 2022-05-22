@@ -1,14 +1,14 @@
 import { CONSTANTS } from "../action";
 
-let listID = 2; //추후에 서버통신으로 DB안에서 마지막 listID를 가져와야한다
-let cardID = 6; //추후에 서버통신으로 DB안에서 마지막 cardID를 가져와야한다
+let listID = 2; 
+let cardID = 6; 
 
 const initialState = [ 
     { title: "last Episode", 
     id: `list-${0}`, 
     cards: [ 
-    { id: `card-${0}`, text: "we created a static list and a static card" }, 
-    { id: `card-${1}`, text: "we used a mix between material" } 
+    { id: `card-${0}`,  cards: ["card-0"], text: "we created a static list and a static card" }, 
+    { id: `card-${1}`,  cards: ["card-0"], text: "we used a mix between material" } 
 ] 
 }, 
 { title: "this Episode", 
@@ -88,14 +88,34 @@ const listsReducer = (state = initialState, action) =>
     }
 
             return newState;
+
+            case CONSTANTS.EDIT_CARD: {
+                const { id, listID, newText } = action.payload;
+                return state.map(list => {
+                  if (list.id === listID) {
+                    const newCards = list.cards.map(card => {
+                      if (card.id === id) {
+                        card.text = newText;
+                        return card;
+                      }
+                      return card;
+                    });
+                    return { ...list, cards: newCards };
+                  }
+                  return list;
+                });
+              }
             
-            case CONSTANTS.DELETE_CARD: {
-                const { listID, id } = action.payload;
-          
-                const list = state[listID];
-                const newCards = list.cards.filter(cardID => cardID !== id);
-          
-                return { ...state, [listID]: { ...list, cards: newCards } };
+              case CONSTANTS.DELETE_CARD: {
+                const { id, listID } = action.payload;
+                return state.map(list => {
+                  if (list.id === listID) {
+                    const newCards = list.cards.filter(card => card.id !== id);
+                    return { ...list, cards: newCards };
+                  } else {
+                    return list;
+                  }
+                });
               }
           
               case CONSTANTS.EDIT_LIST_TITLE: {
