@@ -92,17 +92,27 @@ const listsReducer = (state = initialState, action) =>
             case CONSTANTS.EDIT_CARD: {
                 const { id, listID, newText } = action.payload;
                 return state.map(list => {
+                    console.log("list.id "+list.id);
+                    console.log("listID "+listID);
                   if (list.id === listID) {
                     const newCards = list.cards.map(card => {
                       if (card.id === id) {
+                        console.log("card.id "+card.id);
+                        console.log("id" + id);
+                        console.log("card.text "+card.text);
+                        console.log("newText "+newText);
                         card.text = newText;
+                        console.log(card);
                         return card;
                       }
                       return card;
                     });
                     return { ...list, cards: newCards };
-                  }
+                  }else{
+                  console.log(list);
+                  console.log("edit_card esle구문 호출 listReducers를 한바퀴 돕니다");
                   return list;
+                }
                 });
               }
             
