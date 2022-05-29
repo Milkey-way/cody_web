@@ -5,10 +5,17 @@ import { DragDropContext } from 'react-beautiful-dnd'
 import React, { Component } from 'react'
 import { sort } from "../action"
 import styled from "styled-components"
+import Slidebar from "./Sidebar"
+import { GetIsEditing } from './TrelloCard';
 
 const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
 `;
 
 class App extends Component {
@@ -33,13 +40,14 @@ class App extends Component {
 
   render(){
     const { lists } = this.props;     
+    const isEditing = <GetIsEditing/>;
     //드래그 구현, 호출시점   
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
       <div className="App">
-        <h2>Hello My Loadmap</h2>
+        <Slidebar/>
         <ListContainer>
-          {lists.map(list => (
+          {lists.map((list) => (
             <TrelloList
               listID={list.id}
               key={list.id}
@@ -58,5 +66,14 @@ class App extends Component {
 const mapStateToProps = state => ({
     lists: state.lists
 });
+
+export function SlidebarRender(isEditing){
+  if(isEditing){
+  return <Slidebar/>
+  }
+  else{
+
+  }
+}
 
 export default connect(mapStateToProps)(App);

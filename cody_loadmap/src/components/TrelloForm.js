@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Icon from "@material-ui/core/Icon";
 import Textarea from "react-textarea-autosize";
 import Card from "@material-ui/core/Card";
+import Sidebar from "./Sidebar";
 
 const Container = styled.div`
   width: 284px;

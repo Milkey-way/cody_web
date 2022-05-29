@@ -9,6 +9,9 @@ import { editCard, deleteCard } from "../action";
 import { connect } from "react-redux";
 import TrelloButton from './TrelloButton';
 import TrelloForm from "./TrelloForm"
+import {SlidebarRender} from "./App";
+import Slidebar from './Sidebar';
+
 
 const CardContainer = styled.div`
 margin: 0 0 8px 0;
@@ -72,10 +75,15 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   };
 
   const renderEditForm = () => {
+    
+    console.log("renderEditForm 호출");
     return (
+      <>
+      <Slidebar/>
       <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
+      </>
     );
   };
 
@@ -92,7 +100,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
             <Card>
               
               <EditButton
-                onMouseDown={() => setIsEditing(true)}
+                onMouseDown={() => (setIsEditing(true),<GetIsEditing isEditing={true} />)}
                 fontSize="small"
               >
                 edit
@@ -116,3 +124,9 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
 });
 
 export default connect()(TrelloCard);
+
+export function GetIsEditing(isEditing){
+  const test = isEditing;
+  console.log("isEditing"+isEditing);
+ return test
+}

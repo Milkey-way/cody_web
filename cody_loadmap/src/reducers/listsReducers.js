@@ -1,6 +1,6 @@
 import { CONSTANTS } from "../action";
 
-let listID = 2; 
+let listID = 1; 
 let cardID = 6; 
 
 const initialState = [ 
@@ -10,16 +10,7 @@ const initialState = [
     { id: `card-${0}`,  cards: ["card-0"], text: "we created a static list and a static card" }, 
     { id: `card-${1}`,  cards: ["card-0"], text: "we used a mix between material" } 
 ] 
-}, 
-{ title: "this Episode", 
-id: `list-${1}`, 
-cards: [ 
-    { id: `card-${2}`, text: "Hi" }, 
-    { id: `card-${3}`, text: "we used a mix between material" }, 
-    { id: `card-${4}`, text: "what?" } ,
-    { id: `card-${5}`, text: "hehe?" } 
-] 
-} 
+}
 ];
 const listsReducer = (state = initialState, action) => 
 { 
@@ -62,23 +53,23 @@ const listsReducer = (state = initialState, action) =>
             } = action.payload;
             const newState = [...state];
 
-            //in the same list
+            //같은 리스트라면
             if(droppableIdStart === droppableIdEnd){
                 const list = state.find(list => droppableIdStart === list.id)
                 const card = list.cards.splice(droppableIndexStart, 1)
                 list.cards.splice(droppableIndexEnd, 0, ...card)
             }
 
-            // other list
+      //다른 목록이라면      
       if (droppableIdStart !== droppableIdEnd) {
-        // find the list where the drag happened
+        //드래그가 발생한 목록을 찾는다
         const listStart = state[droppableIdStart];
-        // pull out the card from this list
+        //이 목록에서 카드를 꺼낸다
         const card = listStart.cards.splice(droppableIndexStart, 1);
-        // find the list where the drag ended
+        //드래그가 종료된 목록을 찾는다
         const listEnd = state[droppableIdEnd];
 
-        // put the card in the new list
+        //카드를 새 목록에 넣는다
         listEnd.cards.splice(droppableIndexEnd, 0, ...card);
         return {
           ...state,
