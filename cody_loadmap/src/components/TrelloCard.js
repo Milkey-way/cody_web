@@ -8,9 +8,8 @@ import Icon from "@material-ui/core/Icon";
 import { editCard, deleteCard } from "../action";
 import { connect } from "react-redux";
 import TrelloButton from './TrelloButton';
-import TrelloForm from "./TrelloForm"
-import {SlidebarRender} from "./App";
-import Slidebar from './Sidebar';
+import TrelloForm from "./TrelloForm";
+import ColorButton from "./ColorButton";
 
 
 const CardContainer = styled.div`
@@ -75,11 +74,11 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   };
 
   const renderEditForm = () => {
-    
+    console.log(cardText);
     console.log("renderEditForm 호출");
     return (
       <>
-      <Slidebar/>
+      <ColorButton text={cardText} />
       <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
@@ -100,7 +99,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
             <Card>
               
               <EditButton
-                onMouseDown={() => (setIsEditing(true),<GetIsEditing isEditing={true} />)}
+                onMouseDown={() => (setIsEditing(true))}
                 fontSize="small"
               >
                 edit

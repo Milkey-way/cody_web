@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Icon from "@material-ui/core/Icon";
 import Textarea from "react-textarea-autosize";
 import Card from "@material-ui/core/Card";
+import ColorButton from "./ColorButton"
 import Sidebar from "./Sidebar";
 
 const Container = styled.div`
@@ -35,6 +36,13 @@ const StyledIcon = styled(Icon)`
   cursor: pointer;
 `;
 
+let color = "";
+
+export function SelectColor (selectColor) {
+  console.log("!!! selectcolor: "+selectColor.color);
+  color = selectColor.color;
+}
+
 const TrelloForm = React.memo(
   ({ list, text = "", onChange, closeForm, children }) => {
     const placeholder = list
@@ -45,10 +53,14 @@ const TrelloForm = React.memo(
       e.target.select();
     };
     
+    color = "yellow"
+    console.log("!!!"+color);
+
     return (
       <Container>
         <StyledCard>
           <StyledTextArea
+            color={color}
             placeholder={placeholder}
             autoFocus
             onFocus={handleFocus}
@@ -56,6 +68,7 @@ const TrelloForm = React.memo(
             onChange={e => onChange(e)}
             onBlur={closeForm}
           />
+          <p style={{ color: color }}> 테스트용 문장</p>
         </StyledCard>
         <ButtonContainer>
           {children}

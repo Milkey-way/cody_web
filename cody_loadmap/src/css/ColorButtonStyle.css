@@ -1,0 +1,35 @@
+.root{
+    width:50px;
+    height: 50px;
+  } 
+
+.red{
+    background-Color: #ff0000;
+    color: red;
+}  
+
+.orange{
+    background-Color: #ffa500;
+    color: orange
+}
+
+.yellow{
+    background-Color: #ffd400;
+    color: yellow;
+}
+
+.green{
+
+}
+
+.blue{
+
+}
+
+.white{
+
+}
+
+.black{
+
+}
