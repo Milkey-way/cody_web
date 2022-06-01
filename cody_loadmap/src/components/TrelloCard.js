@@ -51,6 +51,12 @@ const DeleteButton = styled(Icon)`
 const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [cardText, setText] = useState(text);
+  const [color, setColor] = useState("");
+
+  const addColor = (newColor) => {
+    setColor(newColor);
+    console.log("!!!newColor: " + newColor);
+  };
 
   const closeForm = e => {
     console.log("clicked");
@@ -78,8 +84,8 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
     console.log("renderEditForm 호출");
     return (
       <>
-      <ColorButton text={cardText} />
-      <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard}>
+      <ColorButton text={cardText} addColor={addColor} />
+      <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard} color={color}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
       </>

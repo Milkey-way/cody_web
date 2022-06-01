@@ -4,14 +4,14 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import * as SelectColor from './TrelloForm';
 import '../css/ColorButtonStyle.css';
 
-export default function ColorButton(selectText) {
+export default function ColorButton(props) {
+  const {text, addColor} = props;
   const [alignment, setAlignment] = React.useState('web');
   const [message, setMessage] = React.useState("");
   const [color, setColor] = React.useState({ color: "black" });
   const [Id, setId] = React.useState("");
 
-  console.log("colorbutton text: "+selectText.text);
-
+  console.log("colorbutton text: "+props.text);
 
   //컬러 변경 handleClick 시작
 
@@ -77,15 +77,15 @@ export default function ColorButton(selectText) {
       onChange={handleChange}
     >
       <div id="red" onClick={()=>{ handleClick (setId("red"))} } className='red' style={{ color: "red" }}>
-          <ToggleButton  className='root' onClick={()=>SelectColor.SelectColor} >
+          <ToggleButton  className='root' onClick={()=>addColor("red")} >
               </ToggleButton>
       </div>
       <div id="orange" onClick={()=> handleClick (setId("orange"))} className='orange' style={{ color: "#ffa500" }}>
-          <ToggleButton style={ColorContainer.root} >
+          <ToggleButton style={ColorContainer.root}  onClick={()=>addColor("#ffa500")}  >
           </ToggleButton>
       </div>
       <div id="yellow" onClick={()=> handleClick (setId("yellow")) } className='yellow' style={{ color: "yellow" }}>
-      <ToggleButton style={ColorContainer.root}>
+      <ToggleButton style={ColorContainer.root}  onClick={()=>addColor("yellow")} >
       </ToggleButton>
       </div>
       <div style={{backgroundColor: '#008000', color: "green"}}>

@@ -41,10 +41,13 @@ let color = "";
 export function SelectColor (selectColor) {
   console.log("!!! selectcolor: "+selectColor.color);
   color = selectColor.color;
+
+  return(<div><TrelloForm
+    color={color} /></div>);
 }
 
 const TrelloForm = React.memo(
-  ({ list, text = "", onChange, closeForm, children }) => {
+  ({ list, text = "", onChange, closeForm, children, color }) => {
     const placeholder = list
       ? "Enter list title..."
       : "Enter a title for this card...";
@@ -53,22 +56,20 @@ const TrelloForm = React.memo(
       e.target.select();
     };
     
-    color = "yellow"
+    console.log("!!!"+text);
     console.log("!!!"+color);
+
+    // const handleColor = (props) => {
+    //   const {color}= props;
+    //   console.log("!!!color값: "+color);
+    // }
 
     return (
       <Container>
         <StyledCard>
-          <StyledTextArea
-            color={color}
-            placeholder={placeholder}
-            autoFocus
-            onFocus={handleFocus}
-            value={text}
-            onChange={e => onChange(e)}
-            onBlur={closeForm}
-          />
-          <p style={{ color: color }}> 테스트용 문장</p>
+          <div style={{ color: color }}>
+          <p style={{ color: color }}> {text}</p>
+          </div>   
         </StyledCard>
         <ButtonContainer>
           {children}
