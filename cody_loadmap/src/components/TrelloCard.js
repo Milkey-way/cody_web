@@ -10,10 +10,11 @@ import { connect } from "react-redux";
 import TrelloButton from './TrelloButton';
 import TrelloForm from "./TrelloForm";
 import ColorButton from "./ColorButton";
+import '../css/CardStyle.css';
 
 
 const CardContainer = styled.div`
-margin: 0 0 8px 0;
+margin: 0 0 80px 0;
 position: relative;
 `;
 const EditButton = styled(Icon)`
@@ -84,7 +85,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
     console.log("renderEditForm 호출");
     return (
       <>
-      <ColorButton text={cardText} addColor={addColor} />
+      <ColorButton text={cardText} addColor={addColor}/> 
       <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard} color={color}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
@@ -101,6 +102,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
             onDoubleClick={() => setIsEditing(true)}
+            style={{height: 200}}
           >
             <Card>
               
@@ -115,10 +117,13 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
                 delete
               </DeleteButton>
 
-              <CardContent>
-                <Typography>{text}</Typography>
-              </CardContent>
+              <CardContent className='cardContent'>
+                <Typography style={{color: color}}>{text}</Typography>
+              </CardContent>              
             </Card>
+            <div className='alignC'>
+            <div className='v-line' ></div>
+            </div>
           </CardContainer>
         )}
       </Draggable>
@@ -135,3 +140,7 @@ export function GetIsEditing(isEditing){
   console.log("isEditing"+isEditing);
  return test
 }
+
+export function RenderFontButton (){
+  console.log("renderFontButton 호출");
+  } 

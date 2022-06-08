@@ -11,11 +11,8 @@ import { GetIsEditing } from './TrelloCard';
 const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex-direction: column;
-  -webkit-box-pack: center;
   justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
+  flex-wrap: nowrap;
 `;
 
 class App extends Component {

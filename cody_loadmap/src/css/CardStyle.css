@@ -1,0 +1,15 @@
+.v-line {
+    border-left : thick solid #32a1ce;
+    height : 80px;
+  }
+
+ .alignC {
+    text-align: center;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+ } 
+
+ .cardContent {
+   height: 200px;
+ }

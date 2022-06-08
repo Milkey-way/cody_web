@@ -67,7 +67,7 @@ export default function ColorButton(props) {
 
   return (
       <div>
-        <h1 style={color}>test</h1>
+        {/* <h1 style={color}>test</h1> */}
         <h2 id="message" style={color}>
         {message}
       </h2>
@@ -85,11 +85,11 @@ export default function ColorButton(props) {
           </ToggleButton>
       </div>
       <div id="yellow" onClick={()=> handleClick (setId("yellow")) } className='yellow' style={{ color: "yellow" }}>
-      <ToggleButton style={ColorContainer.root}  onClick={()=>addColor("yellow")} >
+      <ToggleButton style={ColorContainer.root}  onClick={()=>addColor("#ffd400")} >
       </ToggleButton>
       </div>
       <div style={{backgroundColor: '#008000', color: "green"}}>
-      <ToggleButton style={ColorContainer.root}>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("green")} >
       </ToggleButton>
       </div>   
     </ToggleButtonGroup>
@@ -99,7 +99,7 @@ export default function ColorButton(props) {
       onChange={handleChange}
     >
       <div style={{backgroundColor: '#0067a3'}}>
-      <ToggleButton style={ColorContainer.root}>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#0067a3")} >
       </ToggleButton>
       </div>
       <div style={{backgroundColor: '#ffffff'}}>

@@ -14,7 +14,7 @@ import Selectbar from './Selectbar';
 
 const drawerWidth = 240;
 
-export default function ClippedDrawer() {
+export default function ClippedDrawer({cardText, addColor}) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />

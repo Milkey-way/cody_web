@@ -4,7 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 
-export default function NativeSelectDemo() {
+export default function NativeSelectDemo(props) {
   return (
     <Box sx={{ minWidth: 200 }}>
       <FormControl fullWidth>

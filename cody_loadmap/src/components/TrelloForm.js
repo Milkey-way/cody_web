@@ -59,17 +59,19 @@ const TrelloForm = React.memo(
     console.log("!!!"+text);
     console.log("!!!"+color);
 
-    // const handleColor = (props) => {
-    //   const {color}= props;
-    //   console.log("!!!color값: "+color);
-    // }
-
     return (
       <Container>
         <StyledCard>
-          <div style={{ color: color }}>
-          <p style={{ color: color }}> {text}</p>
-          </div>   
+          <StyledTextArea
+            placeholder={placeholder}
+            autoFocus
+            onFocus={handleFocus}
+            style={{ color: color }}
+            value={text}
+            onChange={e => onChange(e)}             
+          >
+          <p> {text}</p>
+          </StyledTextArea>   
         </StyledCard>
         <ButtonContainer>
           {children}

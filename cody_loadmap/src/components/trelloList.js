@@ -10,7 +10,7 @@ border-radius: 3px;
 width: 500px;;
 padding: 8px;
 height: 100%;
-margin: 0px 8px 0 0;
+margin: 15px 8px 0 0;
 `
 
 const TrelloList = ({title, cards, listID, index}) => { 

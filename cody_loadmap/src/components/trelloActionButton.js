@@ -60,10 +60,10 @@ class TrelloActionButton extends React.Component {
     const { list } = this.props;
 
     const buttonText = list ? "Add another list" : "Add another card";
-    const buttonTextOpacity = list ? 1 : 0.5;
+    const buttonTextOpacity = list ? 1 : 0.8;
     const buttonTextColor = list ? "black" : "inherit";
-    const buttonTextBackground = list ? "rgba(0,0,0,.15)" : "inherit";
-    const tempstyle = list ? 240 : 100;
+    const buttonTextBackground = list ? "rgba(0,0,0,.15)" : "white";
+    const tempstyle = list ? 15 : 80;
 
     return (
       <div
@@ -73,7 +73,9 @@ class TrelloActionButton extends React.Component {
           opacity: buttonTextOpacity,
           color: buttonTextColor,
           backgroundColor: buttonTextBackground,
-          marginTop: tempstyle
+          marginTop: tempstyle,
+          width: 482
+
         }}
       >
         <Icon>add</Icon>
@@ -92,12 +94,13 @@ class TrelloActionButton extends React.Component {
     const buttonTitle = list ? "Add List" : "Add Card";
 
     return (
-      <div style={{background:"#dfe3e6",padding:"16px",margin:"100px 0 0 0"}}>
+      <div >
         <Card
           style={{
             minHeight: 85,
-            minWidth: 480,
+            minWidth: 272,
             padding: "6px 8px 2px",
+            marginTop: "15px"
           }}
         >
           <Textarea
@@ -111,7 +114,7 @@ class TrelloActionButton extends React.Component {
               width: "100%",
               overflow: "hidden",
               outline: "none",
-              border: "none"
+              border: "none",
             }}
           />
         </Card>
@@ -141,7 +144,7 @@ const styles = {
     cursor: "pointer",
     borderRadius: 3,
     height: 36,
-    width: 500,
+    width:272,
     paddingLeft: 10
   },
   formButtonGroup: {
