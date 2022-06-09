@@ -8,7 +8,8 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 export default function ToggleButtons() {
   const [alignment, setAlignment] = React.useState('left');
 
-  const handleAlignment = (event, newAlignment) => {
+  //필요시 'event' props 추가
+  const handleAlignment = (newAlignment) => {
     setAlignment(newAlignment);
   };
 

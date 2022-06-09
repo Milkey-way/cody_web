@@ -11,6 +11,7 @@ import TrelloButton from './TrelloButton';
 import TrelloForm from "./TrelloForm";
 import ColorButton from "./ColorButton";
 import '../css/CardStyle.css';
+import Selectbar from "./Selectbar"
 
 
 const CardContainer = styled.div`
@@ -53,10 +54,16 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [cardText, setText] = useState(text);
   const [color, setColor] = useState("");
+  const [font, setFont] = useState("");
 
   const addColor = (newColor) => {
     setColor(newColor);
     console.log("!!!newColor: " + newColor);
+  };
+
+  const addFont = (newFont) => {
+    setFont(newFont);
+    console.log("!!!newFont: " + newFont);
   };
 
   const closeForm = e => {
@@ -80,12 +87,18 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
     dispatch(deleteCard(id, listID));
   };
 
+  const RenderFontSelect = ({cardText, addFont}) => {
+    console.log("RenderFontSelect 호출");
+    <Selectbar text={cardText} addFont={addFont} />
+    } 
+
   const renderEditForm = () => {
     console.log(cardText);
     console.log("renderEditForm 호출");
     return (
       <>
-      <ColorButton text={cardText} addColor={addColor}/> 
+      <ColorButton text={cardText} addColor={addColor}/>
+       <RenderFontSelect text={cardText} addFont={addFont}/>
       <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard} color={color}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
@@ -140,7 +153,3 @@ export function GetIsEditing(isEditing){
   console.log("isEditing"+isEditing);
  return test
 }
-
-export function RenderFontButton (){
-  console.log("renderFontButton 호출");
-  } 

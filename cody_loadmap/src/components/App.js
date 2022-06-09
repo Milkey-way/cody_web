@@ -13,6 +13,7 @@ const ListContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   flex-wrap: nowrap;
+  margin-left: 258px;
 `;
 
 class App extends Component {
