@@ -1,28 +1,19 @@
 import * as React from 'react';
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import * as SelectColor from './TrelloForm';
 import '../css/ColorButtonStyle.css';
 
-export default function ColorButton(props) {
-  const {text, addColor} = props;
+function ColorButton(props) {
+  const {cardText, addColor} = props;
   const [alignment, setAlignment] = React.useState('web');
   const [message, setMessage] = React.useState("");
   const [color, setColor] = React.useState({ color: "black" });
   const [Id, setId] = React.useState("");
 
-  console.log("colorbutton text: "+props.text);
-
   //컬러 변경 handleClick 시작
-
-
   const handleClick = (event) => {
-
-    console.log("color값: "+ document.getElementById(`${Id}`).getAttribute('style'));
     const getStyleAttr = document.getElementById(`${Id}`).getAttribute('style');
     const message = document.getElementById("message");
-
-    console.log("getStyleAttr", getStyleAttr);
 
     let sliceColor = getStyleAttr.split(";");
 
@@ -59,15 +50,8 @@ export default function ColorButton(props) {
         }, 
   };
 
-  const callSelectColor = () => {
-    SelectColor.SelectColor(color)
-  };
-
-  callSelectColor();
-
   return (
-      <div>
-        {/* <h1 style={color}>test</h1> */}
+      <div>        
         <h2 id="message" style={color}>
         {message}
       </h2>
@@ -114,3 +98,5 @@ export default function ColorButton(props) {
     </div>
   );
 }
+
+export default React.memo(ColorButton) 

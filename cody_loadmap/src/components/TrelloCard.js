@@ -10,10 +10,8 @@ import { editCard, deleteCard } from "../action";
 import { connect } from "react-redux";
 import TrelloButton from './TrelloButton';
 import TrelloForm from "./TrelloForm";
-import ColorButton from "./ColorButton";
 import '../css/CardStyle.css';
 import ClippedDrawer from "./Sidebar"
-import { fontFamily } from '@mui/system';
 import "../static/fonts/font.css";
 
 
@@ -91,10 +89,10 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   };
 
   const RenderFontSelect = React.memo(
-    ({ text = "", addFont}) => {
+    ({ text = "", addFont, addColor}) => {
     console.log("RenderFontSelect 호출");
     console.log("RenderFontSelect 호출 : " + cardText);
-    return(<ClippedDrawer cardText={cardText} addFont={addFont} />)
+    return(<ClippedDrawer cardText={cardText} addFont={addFont} addColor={addColor} />)
     } 
   );
 
@@ -102,8 +100,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
     console.log("renderEditForm 호출");
     return (
       <>
-      <ColorButton text={cardText} addColor={addColor}/>
-       <RenderFontSelect text={cardText} setText={setText} addFont={addFont}/>
+       <RenderFontSelect text={cardText} setText={setText} addFont={addFont} addColor={addColor}/>
       <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard} color={color} font={font}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
@@ -135,8 +132,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
               
               <EditButton
                 onMouseDown={() => (setIsEditing(true))}
-                fontSize="small"
-              >
+                fontSize="small">
                 edit
               </EditButton>
               

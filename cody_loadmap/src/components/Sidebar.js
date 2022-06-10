@@ -17,8 +17,10 @@ const drawerWidth = 240;
 export default function ClippedDrawer(props) {
   const text = props.cardText;
   const font = props.addFont;
+  const color = props.addColor;
   console.log("ClippedDrawer: "+ text);
   console.log("ClippedDrawer f: "+ font);
+  console.log("ClippedDrawer c: "+ color);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -54,7 +56,7 @@ export default function ClippedDrawer(props) {
           </List>
 
           <List>
-          <ColorButton/>
+          <ColorButton cardText={props.cardText} addColor={props.addColor}/>
           </List>
 
         </Box>
