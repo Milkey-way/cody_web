@@ -114,11 +114,12 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   const useStyles = makeStyles({
     text: {
       color: color,
-      fontFamily: font
+      fontFamily: font,
+      fontSize: '1.2rem'
     },
   });
   const classes = useStyles();
-  
+
   const renderCard = () => {
     return (
       <Draggable draggableId={String(id)} index={index}>
