@@ -9,7 +9,7 @@ import Sidebar from "./Sidebar";
 import "../css/CardStyle.css";
 
 const Container = styled.div`
-  width: 452px;
+  width: 484px;
   margin-bottom: 8px;
 `;
 

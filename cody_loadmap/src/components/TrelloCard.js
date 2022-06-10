@@ -100,7 +100,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
     console.log("renderEditForm 호출");
     return (
       <>
-       <RenderFontSelect text={cardText} setText={setText} addFont={addFont} addColor={addColor}/>
+       <RenderFontSelect style={{display: "none"}} text={cardText} setText={setText} addFont={addFont} addColor={addColor}/>
       <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard} color={color} font={font}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
