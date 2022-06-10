@@ -1,4 +1,5 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
 import Icon from "@material-ui/core/Icon";
 import Textarea from "react-textarea-autosize";
@@ -61,6 +62,14 @@ const TrelloForm = React.memo(
     console.log("!!!"+color);
     console.log("!!! f"+font);
 
+    const useStyles = makeStyles({
+      text: {
+        color: color,
+        fontFamily: font
+      },
+    });
+    const classes = useStyles();
+
     return (
       <Container>
         <StyledCard>
@@ -68,7 +77,7 @@ const TrelloForm = React.memo(
             placeholder={placeholder}
             autoFocus
             onFocus={handleFocus}
-            className={font}
+            className={classes.text}
             value={text}
             onChange={e => onChange(e)}             
           >

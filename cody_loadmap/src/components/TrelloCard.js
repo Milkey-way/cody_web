@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; 
+import { makeStyles } from "@material-ui/core/styles";
 import Card from '@material-ui/core/Card'; 
 import Typography from '@material-ui/core/Typography'; 
 import CardContent from '@material-ui/core/CardContent';
@@ -110,6 +111,14 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
     );
   };
 
+  const useStyles = makeStyles({
+    text: {
+      color: color,
+      fontFamily: font
+    },
+  });
+  const classes = useStyles();
+  
   const renderCard = () => {
     return (
       <Draggable draggableId={String(id)} index={index}>
@@ -135,7 +144,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
               </DeleteButton>
 
               <CardContent className='cardContent'>
-                <Typography style={{fontFamily: font}}>{text}</Typography>
+                <Typography className={classes.text}>{text}</Typography>
               </CardContent>              
             </Card>
             <div className='alignC'>
