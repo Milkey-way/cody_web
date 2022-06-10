@@ -5,16 +5,15 @@ import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 
 export default function NativeSelectDemo(props) {
-  const {text, addFont} = props;
+  const {cardText, addFont} = props;
 
   const onChange = (e) => {
     const { value } = e.target;
+    console.log("text: "+cardText);
     console.log("addfont: "+addFont);
     console.log("selectar value: "+ value);
     addFont(value);
   };
-
-  function test(font) {addFont(font)}
   
   return (
     <Box sx={{ minWidth: 200 }}>
@@ -32,9 +31,9 @@ export default function NativeSelectDemo(props) {
         >
           
           <option value={"NotoSansKR"} onChange={onChange} >NotoSansKR</option>
-          <option value={"안상수체"}onChange={onChange}>안상수체</option>
+          <option value={"HancomUljuBangudae"}onChange={onChange}>한컴 울주 반구대 암각화체</option>
           <option value={"Roboto"} onChange={onChange}>Roboto</option>
-          
+          <option value={"Donoun-Medium"} onChange={onChange}>두넌체</option>
           
         </NativeSelect>
         

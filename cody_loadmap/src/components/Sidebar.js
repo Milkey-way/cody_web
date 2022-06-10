@@ -14,7 +14,11 @@ import Selectbar from './Selectbar';
 
 const drawerWidth = 240;
 
-export default function ClippedDrawer({cardText, addColor}) {
+export default function ClippedDrawer(props) {
+  const text = props.cardText;
+  const font = props.addFont;
+  console.log("ClippedDrawer: "+ text);
+  console.log("ClippedDrawer f: "+ font);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -41,7 +45,7 @@ export default function ClippedDrawer({cardText, addColor}) {
           <Divider />
 
           <List>
-           <ListItem><Selectbar/></ListItem>
+           <ListItem><Selectbar cardText={props.cardText} addFont={props.addFont} /></ListItem>
           </List>
           <Divider />
 

@@ -5,6 +5,7 @@ import Textarea from "react-textarea-autosize";
 import Card from "@material-ui/core/Card";
 import ColorButton from "./ColorButton"
 import Sidebar from "./Sidebar";
+import "../css/CardStyle.css";
 
 const Container = styled.div`
   width: 284px;
@@ -47,7 +48,7 @@ export function SelectColor (selectColor) {
 }
 
 const TrelloForm = React.memo(
-  ({ list, text = "", onChange, closeForm, children, color }) => {
+  ({ list, text = "", onChange, closeForm, children, color, font }) => {
     const placeholder = list
       ? "Enter list title..."
       : "Enter a title for this card...";
@@ -58,6 +59,7 @@ const TrelloForm = React.memo(
     
     console.log("!!!"+text);
     console.log("!!!"+color);
+    console.log("!!! f"+font);
 
     return (
       <Container>
@@ -66,7 +68,7 @@ const TrelloForm = React.memo(
             placeholder={placeholder}
             autoFocus
             onFocus={handleFocus}
-            style={{ color: color }}
+            className={font}
             value={text}
             onChange={e => onChange(e)}             
           >

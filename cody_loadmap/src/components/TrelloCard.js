@@ -11,7 +11,9 @@ import TrelloButton from './TrelloButton';
 import TrelloForm from "./TrelloForm";
 import ColorButton from "./ColorButton";
 import '../css/CardStyle.css';
-import Selectbar from "./Selectbar"
+import ClippedDrawer from "./Sidebar"
+import { fontFamily } from '@mui/system';
+import "../static/fonts/font.css";
 
 
 const CardContainer = styled.div`
@@ -87,19 +89,21 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
     dispatch(deleteCard(id, listID));
   };
 
-  const RenderFontSelect = ({cardText, addFont}) => {
+  const RenderFontSelect = React.memo(
+    ({ text = "", addFont}) => {
     console.log("RenderFontSelect 호출");
-    <Selectbar text={cardText} addFont={addFont} />
+    console.log("RenderFontSelect 호출 : " + cardText);
+    return(<ClippedDrawer cardText={cardText} addFont={addFont} />)
     } 
+  );
 
   const renderEditForm = () => {
-    console.log(cardText);
     console.log("renderEditForm 호출");
     return (
       <>
       <ColorButton text={cardText} addColor={addColor}/>
-       <RenderFontSelect text={cardText} addFont={addFont}/>
-      <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard} color={color}>
+       <RenderFontSelect text={cardText} setText={setText} addFont={addFont}/>
+      <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard} color={color} font={font}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
       </>
@@ -131,7 +135,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
               </DeleteButton>
 
               <CardContent className='cardContent'>
-                <Typography style={{color: color}}>{text}</Typography>
+                <Typography style={{fontFamily: font}}>{text}</Typography>
               </CardContent>              
             </Card>
             <div className='alignC'>
