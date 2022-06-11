@@ -9,7 +9,8 @@ import Slidebar from "./Sidebar"
 import { GetIsEditing } from './TrelloCard';
 import { Button } from '@mui/material';
 import '../css/style.css';
-import ImageSaveButton from './ImageSaveButton'
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 
 const ListContainer = styled.div`
@@ -72,10 +73,10 @@ class App extends Component {
         <Slidebar/>
         <h3 className='text'>※ 리스트 추가는 5개까지만 가능합니다</h3>
         <div className='saveButton'>
-          <Button variant="contained" onClick={SaveImage}>저장하기</Button>
+          <Button variant="contained" onClick={onHtmlToPng}>저장하기</Button>
           </div>
         <ListBox>
-        <ListContainer style={{width: listId.length <=3 ? "1900px" : "2300px"}} >
+        <ListContainer  className='card' style={{width: listId.length <=3 ? "1900px" : "2300px"}} >
           {result1[1] == 0  ? console.log('적용엑스') : console.log('적용오키') }
           {lists.map((list) => (
             <TrelloList
@@ -107,9 +108,16 @@ export function SlidebarRender(isEditing){
   }
 }
 
-function SaveImage (){
-  console.log("이미지 저장 호출");
-  return (<><ImageSaveButton/></>)
-}
+  const onHtmlToPng = () => {	
+    console.log("이미지 저장 호출");
+    domtoimage
+      .toBlob(document.querySelector('.card'))
+      .then((blob) => {
+        saveAs(blob, 'card.png');
+      });
+  }
+
+
+
 
 export default connect(mapStateToProps)(App);
