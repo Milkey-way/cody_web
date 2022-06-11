@@ -31,8 +31,9 @@ class TrelloActionButton extends React.Component {
   };
 
   handleAddList = () => {
-    const { dispatch } = this.props;
+    const { dispatch, listID  } = this.props;
     const { text } = this.state;
+    const { marginLeft } = 20;
 
     if (text) {
       this.setState({
@@ -47,7 +48,6 @@ class TrelloActionButton extends React.Component {
   handleAddCard = () => {
     const { dispatch, listID } = this.props;
     const { text } = this.state;
-
     if (text) {
       this.setState({
         text: ""
@@ -59,11 +59,12 @@ class TrelloActionButton extends React.Component {
   renderAddButton = () => {
     const { list } = this.props;
 
-    const buttonText = list ? "Add another list" : "Add another card";
+    const buttonText = list ? "리스트 추가하기" : "카드 추가하기";
     const buttonTextOpacity = list ? 1 : 0.8;
     const buttonTextColor = list ? "black" : "inherit";
     const buttonTextBackground = list ? "rgba(0,0,0,.15)" : "white";
-    const tempstyle = list ? 15 : 80;
+    const tempstyle = list ? 693/2 : 80;
+    const buttonWidth = list  ? 168 : 482
 
     return (
       <div
@@ -74,7 +75,7 @@ class TrelloActionButton extends React.Component {
           color: buttonTextColor,
           backgroundColor: buttonTextBackground,
           marginTop: tempstyle,
-          width: 482
+          width: buttonWidth
 
         }}
       >
@@ -133,7 +134,11 @@ class TrelloActionButton extends React.Component {
   };
 
   render() {
-    return this.state.formOpen ? this.renderForm() : this.renderAddButton();
+    const { listid } = this.props;
+    console.log("listid크기: " + listid);
+
+    return (
+      listid >=5 ? '' : this.state.formOpen ? this.renderForm() : this.renderAddButton());
   }
 }
 
@@ -144,7 +149,7 @@ const styles = {
     cursor: "pointer",
     borderRadius: 3,
     height: 36,
-    width:272,
+    width:168,
     paddingLeft: 10
   },
   formButtonGroup: {

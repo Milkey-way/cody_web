@@ -10,6 +10,7 @@ import "../css/CardStyle.css";
 
 const Container = styled.div`
   width: 484px;
+  height: 200px;
   margin-bottom: 8px;
 `;
 
@@ -49,7 +50,7 @@ export function SelectColor (selectColor) {
 }
 
 const TrelloForm = React.memo(
-  ({ list, text = "", onChange, closeForm, children, color, font }) => {
+  ({ list, text = "", onChange, closeForm, children, color, font, alignment }) => {
     const placeholder = list
       ? "Enter list title..."
       : "Enter a title for this card...";
@@ -65,7 +66,8 @@ const TrelloForm = React.memo(
     const useStyles = makeStyles({
       text: {
         color: color,
-        fontFamily: font
+        fontFamily: font,
+        textAlign: alignment
       },
     });
     const classes = useStyles();

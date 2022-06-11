@@ -18,16 +18,18 @@ export default function ClippedDrawer(props) {
   const text = props.cardText;
   const font = props.addFont;
   const color = props.addColor;
+  const align = props.addAlignment;
   console.log("ClippedDrawer: "+ text);
   console.log("ClippedDrawer f: "+ font);
   console.log("ClippedDrawer c: "+ color);
+  console.log("ClippedDrawer a: "+ align);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Clipped drawer
+            Cody
           </Typography>
         </Toolbar>
       </AppBar>
@@ -52,7 +54,7 @@ export default function ClippedDrawer(props) {
           <Divider />
 
           <List>
-          <ToggleButtons/>
+          <ToggleButtons cardText={props.cardText} addAlignment={props.addAlignment}/>
           </List>
 
           <List>

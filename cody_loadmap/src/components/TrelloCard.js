@@ -8,7 +8,7 @@ import styled from "styled-components"
 import Icon from "@material-ui/core/Icon";
 import { editCard, deleteCard } from "../action";
 import { connect } from "react-redux";
-import TrelloButton from './TrelloButton';
+import TrelloButton from './SaveButton';
 import TrelloForm from "./TrelloForm";
 import '../css/CardStyle.css';
 import ClippedDrawer from "./Sidebar"
@@ -56,16 +56,22 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   const [cardText, setText] = useState(text);
   const [color, setColor] = useState("");
   const [font, setFont] = useState("");
+  const [alignment, setAlignment] = useState("");
 
   const addColor = (newColor) => {
     setColor(newColor);
     console.log("!!!newColor: " + newColor);
-  };
+  }
 
   const addFont = (newFont) => {
     setFont(newFont);
     console.log("!!!newFont: " + newFont);
-  };
+  }
+
+  const addAlignment = (newAlignment) => {
+    setAlignment(newAlignment);
+    console.log("!!!newAlignment: " + newAlignment);
+  }
 
   const closeForm = e => {
     console.log("clicked");
@@ -89,10 +95,10 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   };
 
   const RenderFontSelect = React.memo(
-    ({ text = "", addFont, addColor}) => {
+    ({ text = "", addFont, addColor, addAlignment}) => {
     console.log("RenderFontSelect 호출");
     console.log("RenderFontSelect 호출 : " + cardText);
-    return(<ClippedDrawer cardText={cardText} addFont={addFont} addColor={addColor} />)
+    return(<ClippedDrawer cardText={cardText} addFont={addFont} addColor={addColor} addAlignment={addAlignment} />)
     } 
   );
 
@@ -100,10 +106,10 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
     console.log("renderEditForm 호출");
     return (
       <>
-       <RenderFontSelect style={{display: "none"}} text={cardText} setText={setText} addFont={addFont} addColor={addColor}/>
-      <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard} color={color} font={font}>
+      <TrelloForm text={cardText} setText={setText} onChange={handleChange} closeForm={closeForm} actionButtonClicked={saveCard} color={color} font={font} alignment={alignment}>
         <TrelloButton onClick={saveCard}>Save</TrelloButton>
       </TrelloForm>
+      <RenderFontSelect style={{display: "none"}} text={cardText} setText={setText} addFont={addFont} addColor={addColor} addAlignment={addAlignment}/>
       </>
     );
   };
@@ -112,6 +118,7 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
     text: {
       color: color,
       fontFamily: font,
+      textAlign: alignment,
       fontSize: '1.2rem'
     },
   });
