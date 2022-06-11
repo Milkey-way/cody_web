@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/cody_web/static/css/main.7440b837.css",
+    "main.js": "/cody_web/static/js/main.b5242201.js",
+    "static/media/NotoSansKRMedium.eot": "/cody_web/static/media/NotoSansKRMedium.a675804d416220b4e440.eot",
+    "static/media/NotoSansKRMedium.woff": "/cody_web/static/media/NotoSansKRMedium.865a70c3c4af55e98eb5.woff",
+    "static/media/Roboto-Regular.ttf": "/cody_web/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/Roboto-Regular.eot?iefix": "/cody_web/static/media/Roboto-Regular.3c896698b7446c491d65.eot",
+    "static/media/Roboto-Regular.woff": "/cody_web/static/media/Roboto-Regular.457c92bb62734e3030ed.woff",
+    "index.html": "/cody_web/index.html",
+    "main.7440b837.css.map": "/cody_web/static/css/main.7440b837.css.map",
+    "main.b5242201.js.map": "/cody_web/static/js/main.b5242201.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7440b837.css",
+    "static/js/main.b5242201.js"
+  ]
+}
