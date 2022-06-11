@@ -7,9 +7,8 @@ import styled from "styled-components";
 const ListContainer = styled.div`
 background-color: #dfe3e6;
 border-radius: 3px;
-width: 500px;;
+width: 500px;
 padding: 8px;
-height: 700px;
 margin: 15px 8px 0 0;
 `
 
