@@ -87,11 +87,11 @@ function ColorButton(props) {
       </ToggleButton>
       </div>
       <div style={{backgroundColor: '#ffffff'}}>
-      <ToggleButton style={ColorContainer.root}>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#ffffff")}>
       </ToggleButton>
       </div>  
       <div style={{backgroundColor: '#000000'}}>
-      <ToggleButton style={ColorContainer.root}>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#000000")}>
       </ToggleButton>
       </div>   
     </ToggleButtonGroup>

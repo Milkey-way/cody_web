@@ -4,7 +4,7 @@ let listID = 1;
 let cardID = 6; 
 
 const initialState = [ 
-    { title: "last Episode", 
+    { title: "example Episode", 
     id: `list-${0}`, 
     cards: [ 
     { id: `card-${0}`,  cards: ["card-0"], text: "we created a static list and a static card" }, 
@@ -117,10 +117,10 @@ const listsReducer = (state = initialState, action) =>
               }
           
               case CONSTANTS.DELETE_LIST: {
+                console.log("deletlist list reduceres");
                 const { listID } = action.payload;
-                const newState = state;
-                delete newState[listID];
-                return newState;
+                console.log(state.filter(list => list.id !== listID));
+                return state.filter(list => list.id !== listID);
               }
         
         default:

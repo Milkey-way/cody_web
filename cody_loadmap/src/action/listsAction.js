@@ -7,6 +7,15 @@ export const addList = (title) => {
     }
 }
 
+export const deleteList = (listID) => {
+    console.log("액션DLL: "+ listID);
+    return {
+        type: CONSTANTS.DELETE_LIST,
+        payload: {listID}
+    }
+}
+
+
 export const sort = (
     droppableIdStart,
     droppableIdEnd,

@@ -1,4 +1,4 @@
-import TrelloList from './trelloList';
+import TrelloList from './TrelloList';
 import {connect} from 'react-redux';
 import TrelloActionButton from './trelloActionButton';
 import { DragDropContext } from 'react-beautiful-dnd'
@@ -11,6 +11,7 @@ import { Button } from '@mui/material';
 import '../css/style.css';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
+import axios from 'axios';
 
 
 const ListContainer = styled.div`
@@ -54,6 +55,12 @@ class App extends Component {
     const { lists } = this.props;     
     const isEditing = <GetIsEditing/>;
     const listId =  lists.map((list) => (list.id))
+    const listTitle =  lists.map((list) => (list.title))
+    const listCards =  lists.map((list) => (list.cards))
+
+    const cardId = listCards.map((card) => (card.id))
+    const cardText = listCards.map((card) => (card.text))
+
     const listId2 = listId+"";
     console.log("listIdLength: "+listId.length);
     var result1 = listId2.split("-");
@@ -65,7 +72,6 @@ class App extends Component {
       console.log("리스트가 두개 이상임");  
     }
 
-
     //드래그 구현, 호출시점   
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
@@ -73,11 +79,10 @@ class App extends Component {
         <Slidebar/>
         <h3 className='text'>※ 리스트 추가는 5개까지만 가능합니다</h3>
         <div className='saveButton'>
-          <Button variant="contained" onClick={onHtmlToPng}>저장하기</Button>
+          <Button variant="contained" onClick={()=>{onHtmlToPng();dataSend();test({listId,listTitle,listCards})}}>저장하기</Button>
           </div>
         <ListBox>
         <ListContainer  className='card' style={{width: listId.length <=3 ? "1900px" : "2300px"}} >
-          {result1[1] == 0  ? console.log('적용엑스') : console.log('적용오키') }
           {lists.map((list) => (
             <TrelloList
               listID={list.id}
@@ -109,12 +114,55 @@ export function SlidebarRender(isEditing){
 }
 
   const onHtmlToPng = () => {	
-    console.log("이미지 저장 호출");
     domtoimage
       .toBlob(document.querySelector('.card'))
       .then((blob) => {
         saveAs(blob, 'card.png');
       });
+  }
+
+  const dataSend = () => {
+    axios(
+      {
+        url: 'http://15.164.104.68/',
+        method: 'post',
+        data: {
+          email:'test@naver.com',aaa:'aaa222'
+        } , 
+       
+        baseURL: 'http://localhost:3000',
+        //withCredentials: true,
+      }
+    ).then(function (response) {
+      console.log(response.data)
+      console.log(response.data.JavaData[0].NICKNAME)
+    });
+  }
+
+  export const test = (props) => {
+    console.log("test Props: "+props);
+    console.log("test ListID: " + props.listId);
+    console.log("test listTitle: " + props.listTitle);
+    console.log("test listCards: " + props.listCards);
+
+    const listCards = props.listCards
+
+    const cardId = listCards.map((card) => (card.id))
+    const cardText = listCards.map((card) => (card.text))
+
+    console.log("test cardsId: " + cardId);
+    console.log("test cardsText: " + cardText);
+    //List OK
+    /* 
+    ListID: list-0, list-1
+    ListTitle: last Episode, we
+    ListCards: [object Object],[object Object] 
+    */
+    //Card NOT
+    /* 
+    cardID:
+    cardsText:  
+    */
   }
 
 
