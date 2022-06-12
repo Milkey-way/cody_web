@@ -1,5 +1,8 @@
 # cody_web 
 
+### 배포 완료
+https://milkey-way.github.io/cody_web/
+
 #### 2. 로드맵 시안 
 
 + 메인 및 수정
