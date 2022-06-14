@@ -1,8 +1,9 @@
-import React, {useState} from 'react'; 
+import React, {useState, useEffect} from 'react'; 
 import TrelloCard from './TrelloCard';
 import TrelloActionButton from './trelloActionButton';
 import { Droppable } from 'react-beautiful-dnd'
 import styled from "styled-components";
+import { connect } from "react-redux";
 import Icon from "@material-ui/core/Icon";
 import { deleteList } from "../action";
 
@@ -14,21 +15,6 @@ padding: 8px;
 margin: 15px 8px 0 0;
 position: relative;
 `
-
-const EditButton = styled(Icon)`
-  position: absolute;
-  display: none;
-  right: 5px;
-  top: 5px;
-  opacity: 0.5;
-  ${ListContainer}:hover & {
-    display: block;
-    cursor: pointer;
-  }
-  &:hover {
-    opacity: 0.8;
-  }
-`;
 
 const DeleteButton = styled(Icon)`
   position: absolute;
@@ -50,8 +36,10 @@ const DeleteButton = styled(Icon)`
 const TrelloList = ({title, cards, listID, index, dispatch}) => { 
 
   const [isEditing, setIsEditing] = useState(false);
+
   const handleDeleteCard = () => {
     console.log("handleDeleteCArd: " + deleteList);
+    console.log("dipatch: " + dispatch) ;
     dispatch(deleteList(listID));
   };
     return (
@@ -91,4 +79,4 @@ const TrelloList = ({title, cards, listID, index, dispatch}) => {
     ); 
 }
 
-export default TrelloList;
+export default connect()(TrelloList);

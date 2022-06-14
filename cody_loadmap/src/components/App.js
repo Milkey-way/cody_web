@@ -2,7 +2,7 @@ import TrelloList from './TrelloList';
 import {connect} from 'react-redux';
 import TrelloActionButton from './trelloActionButton';
 import { DragDropContext } from 'react-beautiful-dnd'
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import { sort } from "../action"
 import styled from "styled-components"
 import Slidebar from "./Sidebar"
@@ -11,7 +11,6 @@ import { Button } from '@mui/material';
 import '../css/style.css';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
-import axios from 'axios';
 
 
 const ListContainer = styled.div`
@@ -53,13 +52,9 @@ class App extends Component {
 
   render(){
     const { lists } = this.props;     
-    const isEditing = <GetIsEditing/>;
     const listId =  lists.map((list) => (list.id))
     const listTitle =  lists.map((list) => (list.title))
     const listCards =  lists.map((list) => (list.cards))
-
-    const cardId = listCards.map((card) => (card.id))
-    const cardText = listCards.map((card) => (card.text))
 
     const listId2 = listId+"";
     console.log("listIdLength: "+listId.length);
@@ -79,7 +74,7 @@ class App extends Component {
         <Slidebar/>
         <h3 className='text'>※ 리스트 추가는 5개까지만 가능합니다</h3>
         <div className='saveButton'>
-          <Button variant="contained" onClick={()=>{onHtmlToPng();dataSend();test({listId,listTitle,listCards})}}>저장하기</Button>
+          <Button variant="contained" onClick={()=>{onHtmlToPng();test({listId,listTitle,listCards})}}>저장하기</Button>
           </div>
         <ListBox>
         <ListContainer  className='card' style={{width: listId.length <=3 ? "1900px" : "2300px"}} >
@@ -119,24 +114,6 @@ export function SlidebarRender(isEditing){
       .then((blob) => {
         saveAs(blob, 'card.png');
       });
-  }
-
-  const dataSend = () => {
-    axios(
-      {
-        url: 'http://15.164.104.68/',
-        method: 'post',
-        data: {
-          email:'test@naver.com',aaa:'aaa222'
-        } , 
-       
-        baseURL: 'http://localhost:3000',
-        //withCredentials: true,
-      }
-    ).then(function (response) {
-      console.log(response.data)
-      console.log(response.data.JavaData[0].NICKNAME)
-    });
   }
 
   export const test = (props) => {

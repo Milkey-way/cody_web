@@ -4,19 +4,19 @@ import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
 import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import '../css/ToggleStyle.css'
 
 export default function ToggleButtons(props) {
   const [alignment, setAlignment] = React.useState('left');
-  const {cardText, addAlignment} = props;
+  const {addAlignment} = props;
 
   //필요시 'event' props 추가
   const handleAlignment = (newAlignment) => {
-    const { value } = newAlignment.target;
     setAlignment(newAlignment);
-    // addAlignment(value);
   };
 
   return (
+    <div className='toggleGroup'>
     <ToggleButtonGroup
       value={alignment}
       exclusive
@@ -33,5 +33,7 @@ export default function ToggleButtons(props) {
         <FormatAlignRightIcon/>
       </ToggleButton>
     </ToggleButtonGroup>
+    <hr></hr>
+    </div>
   );
 }

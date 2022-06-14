@@ -3,6 +3,14 @@
     height: 50px;
   } 
 
+  .colorGroup{
+    text-align: center;
+  }
+
+  .title{
+    font-weight: bold;
+  }
+
 .red{
     background-Color: #ff0000;
     color: red;
@@ -14,22 +22,50 @@
 }
 
 .yellow{
-    background-Color: #ffd400;
+    background-Color: yellow;
     color: yellow;
 }
 
 .green{
-
+    background-color: #008000;
+    color: #008000;
 }
 
 .blue{
-
+    background-color: #0067a3;
+    color: #0067a3;
 }
 
-.white{
+.purple{
+     background-color:#5005F2 ;
+     color: #5005F2;
+}
 
+.sky{
+    background-color: #41D9BD;
+    color: #41D9BD;
 }
 
 .black{
+    background-color: #000000;
+    color: #000000;
+}
 
+.wine{
+    background-color: #731717;
+    color: #731717;
+}
+
+.pink{
+    background-color: #F25E7A;
+    color:#F25E7A;
+}
+.greenblue{
+    background-color: #0E6973;
+    color: #0E6973;
+}
+
+.skyblue{
+    background-color: #9AA3D9;
+    color: #9AA3D9;
 }

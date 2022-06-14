@@ -10,7 +10,7 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ToggleButtons from './ToggleButtons';
 import ColorButton from './ColorButton';
-import Selectbar from './Selectbar';
+import Selectbar from './FontSelectbar';
 
 const drawerWidth = 240;
 

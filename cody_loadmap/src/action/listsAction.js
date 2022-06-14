@@ -7,6 +7,16 @@ export const addList = (title) => {
     }
 }
 
+export const editTitle = (listID, newTitle) => {
+    return {
+      type: CONSTANTS.EDIT_LIST_TITLE,
+      payload: {
+        listID,
+        newTitle
+      }
+    };
+  };
+
 export const deleteList = (listID) => {
     console.log("액션DLL: "+ listID);
     return {

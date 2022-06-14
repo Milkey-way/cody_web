@@ -51,10 +51,8 @@ function ColorButton(props) {
   };
 
   return (
-      <div>        
-        <h2 id="message" style={color}>
-        {message}
-      </h2>
+      <div className='colorGroup'>   
+      <span className='title'>◌기본◌</span> <h2></h2>    
     <ToggleButtonGroup 
       value={alignment}
       exclusive
@@ -72,7 +70,7 @@ function ColorButton(props) {
       <ToggleButton style={ColorContainer.root}  onClick={()=>addColor("#ffd400")} >
       </ToggleButton>
       </div>
-      <div style={{backgroundColor: '#008000', color: "green"}}>
+      <div className='green'>
       <ToggleButton style={ColorContainer.root} onClick={()=>addColor("green")} >
       </ToggleButton>
       </div>   
@@ -82,19 +80,47 @@ function ColorButton(props) {
       exclusive
       onChange={handleChange}
     >
-      <div style={{backgroundColor: '#0067a3'}}>
+      <div className='blue'>
       <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#0067a3")} >
       </ToggleButton>
       </div>
-      <div style={{backgroundColor: '#ffffff'}}>
-      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#ffffff")}>
+      <div className='purple'>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#5005F2")}>
+      </ToggleButton>
+      </div>
+      <div className='sky'>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#41D9BD")}>
       </ToggleButton>
       </div>  
-      <div style={{backgroundColor: '#000000'}}>
+      <div className='black'>
       <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#000000")}>
       </ToggleButton>
       </div>   
     </ToggleButtonGroup>
+    <hr/>
+    <span className='title'>◌트렌드◌</span>
+    <h2></h2>
+    <ToggleButtonGroup 
+      value={alignment}
+      exclusive
+      onChange={handleChange}
+    >
+      <div className='wine'>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#731717")} >
+      </ToggleButton>
+      </div>
+      <div className='pink'>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#F25E7A")}>
+      </ToggleButton>
+      </div>
+      <div className='greenblue'>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#0E6973")} >
+      </ToggleButton>
+      </div>
+      <div className='skyblue'>
+      <ToggleButton style={ColorContainer.root} onClick={()=>addColor("#9AA3D9")}></ToggleButton>
+      </div>
+      </ToggleButtonGroup>
     </div>
   );
 }
