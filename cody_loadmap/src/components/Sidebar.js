@@ -11,6 +11,7 @@ import ListItem from '@mui/material/ListItem';
 import ToggleButtons from './ToggleButtons';
 import ColorButton from './ColorButton';
 import Selectbar from './FontSelectbar';
+import '../css/style.css'
 
 const drawerWidth = 240;
 
@@ -28,7 +29,7 @@ export default function ClippedDrawer(props) {
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
+          <Typography className='cursor' variant="h6" noWrap component="div" onClick={() => window.location.replace('http://15.164.104.68/')}>
             Cody
           </Typography>
         </Toolbar>
